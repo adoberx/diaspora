@@ -69,7 +69,7 @@ module ApplicationHelper
   end
 
   def all_services_connected?
-    current_user.services.size == AppConfig['configured_services'].size
+    current_user.services.size == AppConfig.configured_services.size
   end
 
   def popover_with_close_html(without_close_html)
