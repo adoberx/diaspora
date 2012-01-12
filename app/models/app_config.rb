@@ -15,6 +15,7 @@ class AppConfig < Settingslogic
     end
     config_file
   end
+
   source source_file_name
   namespace Rails.env
 
@@ -95,7 +96,6 @@ HELP
   def self.normalize_pod_url
     url = Addressable::URI.heuristic_parse(self[:pod_url])
     if url.scheme.blank?
-      puts url.to_s
       self[:pod_url] = url.to_s
     end
     unless url.to_s.ends_with?('/')
@@ -140,7 +140,7 @@ HELP
     super
     if key.to_sym == :pod_url
       @@pod_uri = nil
-      normalize_pod_url_and_update_pod_uri
+      normalize_pod_url
    end
   end
 
